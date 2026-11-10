@@ -62,15 +62,13 @@ export const organizationList: Organization[] = [
       alias: "Roger",
       active: true,
       position: { altitude: 0.04, latitude: 2.25475478, longitude: -83.6945691  },
-      hoursOfOperation: [
-        { 
-          daysOfWeek: ['mon', 'tue', 'fri'],
-          allDay: false,
-          openingTime: '09:00:00',
-          closingTime: '16:30:00'
-         }
-      ],
-      telecom: [ 
+      hoursOfOperation: {
+        daysOfWeek: ['mon', 'tue', 'fri'],
+        allDay: false,
+        openingTime: '09:00:00',
+        closingTime: '16:30:00'
+      },
+      telecom: [
         {system: "email", value: "rogerndutiye@gmail.com", use: "work" },
         {system: "phone", value: "250788841494", use: "work" }
       ]
@@ -81,15 +79,13 @@ export const organizationList: Organization[] = [
       alias: "Unimed Vale",
       active: true,
       position: { altitude: 0.04, latitude: 2.25475478, longitude: -83.6945691  },
-      hoursOfOperation: [
-        { 
-          daysOfWeek: ['mon', 'tue', 'fri'],
-          allDay: false,
-          openingTime: '09:00:00',
-          closingTime: '16:30:00'
-         }
-      ],
-      telecom: [ 
+      hoursOfOperation: {
+        daysOfWeek: ['mon', 'tue', 'fri'],
+        allDay: false,
+        openingTime: '09:00:00',
+        closingTime: '16:30:00'
+      },
+      telecom: [
         {system: "email", value: "unimed-vale@gmail.com", use: "work" },
         {system: "phone", value: "250788841494", use: "work" }
       ]
@@ -100,15 +96,13 @@ export const organizationList: Organization[] = [
       alias: "Unimed Florianópolis",
       active: true,
       position: { altitude: 0.04, latitude: 2.25475478, longitude: -83.6945691  },
-      hoursOfOperation: [
-        { 
-          daysOfWeek: ['mon', 'tue', 'fri'],
-          allDay: false,
-          openingTime: '09:00:00',
-          closingTime: '16:30:00'
-         }
-      ],
-      telecom: [ 
+      hoursOfOperation: {
+        daysOfWeek: ['mon', 'tue', 'fri'],
+        allDay: false,
+        openingTime: '09:00:00',
+        closingTime: '16:30:00'
+      },
+      telecom: [
         {system: "email", value: "unimed-floripa@gmail.com", use: "work" },
         {system: "phone", value: "250788841494", use: "work" }
       ]
@@ -119,19 +113,17 @@ export const organizationList: Organization[] = [
       alias: "Unimed Curitiba",
       active: true,
       position: { altitude: 0.04, latitude: 2.25475478, longitude: -83.6945691  },
-      hoursOfOperation: [
-        { 
-          daysOfWeek: ['mon', 'tue', 'fri'],
-          allDay: false,
-          openingTime: '09:00:00',
-          closingTime: '16:30:00'
-         }
-      ],
-      telecom: [ 
+      hoursOfOperation: {
+        daysOfWeek: ['mon', 'tue', 'fri'],
+        allDay: false,
+        openingTime: '09:00:00',
+        closingTime: '16:30:00'
+      },
+      telecom: [
         {system: "email", value: "unimed-curitiba@gmail.com", use: "work" },
         {system: "phone", value: "250788841494", use: "work" }
       ]
-    }  
+    }
   ];
 
 export const proceduresMock: procedureI[] = [{

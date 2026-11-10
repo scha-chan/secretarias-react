@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { BsFillCursorFill } from "react-icons/bs";
 import Organization from "../../model/Organization";
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type OrganizationFormData = {
   id: string | null;
@@ -49,32 +49,37 @@ const NewOrganization: React.FC<NewOrganizationProps> = (props: any) => {
   } = useForm<OrganizationFormData>({
     resolver: yupResolver(schema) as any,
   });
-  console.log(id);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const organizationData = useAppSelector((state) =>
     state.organization.organizationList.find((item) => item.organization_Id === id)
   );
-  const email = organizationData?.telecom.find((item:any) => item.system === 'email');
-  const telefone = organizationData?.telecom.find((item:any) => item.system === 'phone');
-  const celular = organizationData?.telecom.find((item:any) => item.system === 'mobile');
 
-  setValue("name", organizationData?.name || "");
-  setValue("email", email?.value || '');
-  setValue("celular", celular?.value || '');
-  setValue("telefone", telefone?.value || '');
-  setValue("alias",  organizationData?.alias || "");
-  setValue("id",  organizationData?.organization_Id || null);
-  setValue("active",  organizationData?.active || false);
-  setValue("allDay",  organizationData?.hoursOfOperation.allDay || false);
-  setValue("openingTime",  organizationData?.hoursOfOperation.openingTime || '');
-  setValue("closingTime",  organizationData?.hoursOfOperation.closingTime || '');
+  useEffect(() => {
+    if (!organizationData) return;
+    const email = organizationData.telecom.find((item: any) => item.system === 'email');
+    const telefone = organizationData.telecom.find((item: any) => item.system === 'phone');
+    const celular = organizationData.telecom.find((item: any) => item.system === 'mobile');
+    setValue("name", organizationData.name);
+    setValue("email", email?.value || '');
+    setValue("celular", celular?.value || '');
+    setValue("telefone", telefone?.value || '');
+    setValue("alias", organizationData.alias);
+    setValue("id", organizationData.organization_Id);
+    setValue("active", organizationData.active);
+    setValue("allDay", organizationData.hoursOfOperation.allDay);
+    setValue("openingTime", organizationData.hoursOfOperation.openingTime);
+    setValue("closingTime", organizationData.hoursOfOperation.closingTime);
+    setValue("latitude", organizationData.position.latitude);
+    setValue("longitude", organizationData.position.longitude);
+    setValue("altitude", organizationData.position.altitude);
+  }, [organizationData]);
 
   const createJson = (data: OrganizationFormData) => {
     const { name, email, telefone, celular, alias, active, latitude, longitude, altitude, id, allDay, closingTime, openingTime  } = data;
     const postOrganization: Organization = { 
-      organization_Id: id ? id :  (Math.random() + 100).toString(),
+      organization_Id: id ? id : uuidv4(),
       name: name, 
       alias: alias, 
       telecom: [

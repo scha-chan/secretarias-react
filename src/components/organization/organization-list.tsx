@@ -28,7 +28,7 @@ const OrganizationList: React.FC<OrganizationProps> = ({ organizations }) => {
   const DialogHandle = () => {
     setOpen((current) => !current);
   };
-  console.log(organizations);  return (
+  return (
     <div className="flex flex-col mx-20">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">     
         {organizations &&
