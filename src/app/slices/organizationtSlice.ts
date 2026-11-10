@@ -16,14 +16,12 @@ export const organizationSlice = createSlice({
   initialState,
   reducers: {
     addOrganization: (state, action: PayloadAction<Organization>) => {
-      console.log('add',action); 
       state.organizationList.push(action.payload);
     },
     updateOrganization: (state, action: PayloadAction<Organization>) => {
       const {
         payload: { organization_Id, name, alias, telecom, position, hoursOfOperation, active },
       } = action;
-      console.log('put',organization_Id, name);
       state.organizationList = state.organizationList.map((item) =>
       item.organization_Id === organization_Id ? { ...item, name, alias, telecom, position, hoursOfOperation, active } : item
       );
